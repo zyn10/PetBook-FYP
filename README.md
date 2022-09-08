@@ -1,4 +1,4 @@
-<h1>PetBook<h1>
+<h1>PetBook</h1>
 Petholders Community
 
 <h1>Group Members</h1>
@@ -10,4 +10,4 @@ Muhammad Umer
 Mr. Usman Ghous
 <h1>Co-supervisor</h1>
 Dr. Umar Aftab
-<h2>Defense Date: 07-09-2022<\h2> [Cleared Successfully]
+<h2>Defense Date: 07-09-2022</h2> [Cleared Successfully]
