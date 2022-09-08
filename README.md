@@ -2,9 +2,9 @@
 Petholders Community
 
 <h1>Group Members</h1>
-Danish Ahmad
-Muhammad Zain
-Muhammad Umer
+=> Danish Ahmad<br>
+=> Muhammad Zain<br>
+=> Muhammad Umer<br>
 
 <h1>Supervisor</h1>
 Mr. Usman Ghous
