@@ -12,3 +12,4 @@ Mr. Usman Ghous
 Dr. Umar Aftab
 <h2>Defense 07-09-2022</h2> [Cleared]
 <h2>Mid-Evaluation  16-11-2022</h2> [Cleared]
+<h2>Mid-Evaluation  09-01-2023</h2> [Cleared]
