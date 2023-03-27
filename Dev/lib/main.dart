@@ -5,7 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:petbook/providers/user_provider.dart';
 import 'package:petbook/responsive/responsive_layout.dart';
 import 'package:petbook/responsive/web_screen_layout.dart';
-import 'package:petbook/screen/login_screen.dart';
+import 'package:petbook/screen/auth/login_screen.dart';
 import 'package:petbook/responsive/mobile_screen_layout.dart';
 import 'package:provider/provider.dart';
 //import 'package:petbook/screen/login_screen.dart';

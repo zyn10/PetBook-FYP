@@ -7,14 +7,14 @@ import 'package:petbook/resources/storage_methods.dart';
 class AuthMethods {
   final FirebaseAuth _auth = FirebaseAuth.instance;
   final FirebaseFirestore _firestore = FirebaseFirestore.instance;
-
+  // get user details
   Future<model.User> getUserDetails() async {
     User currentUser = _auth.currentUser!;
 
-    DocumentSnapshot snap =
+    DocumentSnapshot documentSnapshot =
         await _firestore.collection('users').doc(currentUser.uid).get();
 
-    return model.User.fromSnap(snap);
+    return model.User.fromSnap(documentSnapshot);
   }
 
 //sign up user
@@ -46,8 +46,6 @@ class AuthMethods {
           photoUrl: photoUrl,
           email: email,
           fullname: fullname,
-          followers: [],
-          following: [],
         );
         await _firestore.collection("users").doc(cred.user!.uid).set(
               user.toJson(),
@@ -89,5 +87,9 @@ class AuthMethods {
       }
     }
     return res;
+  }
+
+  Future<void> signOut() async {
+    await _auth.signOut();
   }
 }

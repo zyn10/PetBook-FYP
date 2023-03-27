@@ -98,10 +98,4 @@ class FireStoreMethods {
     return res;
   }
 
-
-//    } catch(e) {
-  //     print(e.toString());
-  //  }
-//  }
-
 }
