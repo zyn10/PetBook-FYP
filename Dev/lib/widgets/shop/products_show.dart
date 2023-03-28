@@ -34,14 +34,15 @@ class ProductShowList extends StatelessWidget {
                 Text(
                   title,
                   style: kSourceSansProBold.copyWith(
-                    fontSize: SizeConfig.blockSizeHorizontal! * 6,
+                    fontSize: 16,
+                    //SizeConfig.blockSizeHorizontal! * 6,
                   ),
                 ),
                 const SizedBox(
                   width: 10,
                 ),
                 Text(
-                  '🐕',
+                  '🛒',
                   style: kSourceSansProBold.copyWith(
                     fontSize: SizeConfig.blockSizeHorizontal! * 3,
                   ),

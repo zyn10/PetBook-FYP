@@ -10,7 +10,7 @@ class UserListScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final UserProvider userProvider = Provider.of<UserProvider>(context);
-    userProvider.getUser!.uid;
+    userProvider.getUser.uid;
     return Scaffold(
       appBar: AppBar(
         title: const Text('Users'),
@@ -18,7 +18,7 @@ class UserListScreen extends StatelessWidget {
       body: StreamBuilder<QuerySnapshot>(
         stream: FirebaseFirestore.instance
             .collection('users')
-            .where('uid', isNotEqualTo: userProvider.getUser!.uid)
+            .where('uid', isNotEqualTo: userProvider.getUser.uid)
             .snapshots(),
         builder: (BuildContext context, AsyncSnapshot<QuerySnapshot> snapshot) {
           if (!snapshot.hasData) {
@@ -136,7 +136,7 @@ class _ChatScreenState extends State<ChatScreen> {
                               fontSize: 16,
                             ),
                           ),
-                          SizedBox(height: 5),
+                          const SizedBox(height: 5),
                           Text(
                             DateTime.fromMillisecondsSinceEpoch(
                               message['timestamp'].millisecondsSinceEpoch,

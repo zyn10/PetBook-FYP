@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:petbook/widgets/shop/single_product.dart';
 
 const List<String> categoriesList = [
   "Dogs",
@@ -40,4 +41,27 @@ List<String> keysOfRating = [
   "Average",
   "Good",
   "Excellent"
+];
+
+List<Widget> testChildren = const [
+  SingleProduct(
+    url:
+        "https://i2-prod.irishmirror.ie/incoming/article26185096.ece/ALTERNATES/s615/0_I220209_151028_100570909oTextTRMRMMGLPICT000255932810o.jpg",
+  ),
+  SingleProduct(
+    url:
+        "https://i2-prod.irishmirror.ie/incoming/article26185096.ece/ALTERNATES/s615/0_I220209_151028_100570909oTextTRMRMMGLPICT000255932810o.jpg",
+  ),
+  SingleProduct(
+    url:
+        "https://i2-prod.irishmirror.ie/incoming/article26185096.ece/ALTERNATES/s615/0_I220209_151028_100570909oTextTRMRMMGLPICT000255932810o.jpg",
+  ),
+  SingleProduct(
+    url:
+        "https://i2-prod.irishmirror.ie/incoming/article26185096.ece/ALTERNATES/s615/0_I220209_151028_100570909oTextTRMRMMGLPICT000255932810o.jpg",
+  ),
+  SingleProduct(
+    url:
+        "https://i2-prod.irishmirror.ie/incoming/article26185096.ece/ALTERNATES/s615/0_I220209_151028_100570909oTextTRMRMMGLPICT000255932810o.jpg",
+  ),
 ];

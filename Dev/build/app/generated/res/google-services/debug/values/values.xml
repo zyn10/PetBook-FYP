@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="default_web_client_id" translatable="false">1055007900065-trepa5afqlhc45032kf7eoko8b3f5k5s.apps.googleusercontent.com</string>
+    <string name="gcm_defaultSenderId" translatable="false">1055007900065</string>
+    <string name="google_api_key" translatable="false">AIzaSyBn66-Eh_ZPZfKh50zRYYVJQ6Hwcr3a_Pk</string>
+    <string name="google_app_id" translatable="false">1:1055007900065:android:aae393b43e7eb552948be0</string>
+    <string name="google_crash_reporting_api_key" translatable="false">AIzaSyBn66-Eh_ZPZfKh50zRYYVJQ6Hwcr3a_Pk</string>
+    <string name="google_storage_bucket" translatable="false">petbookdb-91436.appspot.com</string>
+    <string name="project_id" translatable="false">petbookdb-91436</string>
+</resources>

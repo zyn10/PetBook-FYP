@@ -40,7 +40,7 @@ class _ShopState extends State<Shop> {
   @override
   Widget build(BuildContext context) {
     final UserProvider userProvider = Provider.of<UserProvider>(context);
-    userProvider.getUser!.uid;
+    userProvider.getUser.uid;
 
     return Scaffold(
       appBar: SearchBar(
@@ -88,7 +88,7 @@ class _ShopState extends State<Shop> {
                               width: 6,
                             ),
                             Text(
-                              "${userProvider.getUser!.fullname} ",
+                              "${userProvider.getUser.fullname} ",
                               style: kSourceSansProMedium.copyWith(
                                 fontSize: SizeConfig.blockSizeHorizontal! * 5.5,
                                 color: kBlack,

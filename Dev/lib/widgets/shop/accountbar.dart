@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:petbook/Layout/app_style.dart';
 
-import '../../utils/utils.dart';
 
 class AccountScreenAppBar extends StatelessWidget with PreferredSizeWidget {
   @override

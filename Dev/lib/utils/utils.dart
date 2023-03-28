@@ -12,7 +12,7 @@ pickImage(ImageSource source) async {
 }
 
 Size getScreenSize() {
-  return MediaQueryData.fromWindow(WidgetsBinding.instance!.window).size;
+  return MediaQueryData.fromWindow(WidgetsBinding.instance.window).size;
 }
 
 // for displaying snackbars
