@@ -10,10 +10,10 @@ Muhammad Umer<br>
 Mr. Usman Ghous
 <h2>Co-supervisor</h2>
 Dr. Umar Aftab
-<h2>Defense 07-09-2022</h2> [Cleared]
-<h2>Mid-Evaluation  16-11-2022</h2> [Cleared]
+<h2>FYP-1 Defense 07-09-2022</h2> [Cleared]
+<h2>FYP-1 Mid-Evaluation  16-11-2022</h2> [Cleared]
 <h2>FYP-1 Final Evaluation 09-01-2023</h2> [Cleared]
-<h2>FYP-2 Evaluation-1 31-03-2023</h2> [Cleared]
+<h2>FYP-2 First Evaluation 31-03-2023</h2> [Cleared]
 
 <h2>Features</h2>
 
