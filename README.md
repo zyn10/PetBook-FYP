@@ -14,6 +14,7 @@ Dr. Umar Aftab
 <h2>FYP-1 Mid-Evaluation  16-11-2022</h2> [Cleared]
 <h2>FYP-1 Final Evaluation 09-01-2023</h2> [Cleared]
 <h2>FYP-2 First Evaluation 31-03-2023</h2> [Cleared]
+<h2>FYP-2 Final Evaluation 17-05-2023</h2> [Cleared]
 
 <h2>Features</h2>
 
