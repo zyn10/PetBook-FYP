@@ -1,5 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:petbook/screen/Post/user_posts.dart';
 import 'package:petbook/screen/profile_screen.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 
@@ -39,7 +40,7 @@ class _SearchScreenState extends State<SearchScreen> {
                   .collection('users')
                   .where(
                     'username',
-                    isGreaterThanOrEqualTo: searchController.text,
+                    isEqualTo: searchController.text,
                   )
                   .get(),
               builder: (context, snapshot) {
@@ -52,13 +53,23 @@ class _SearchScreenState extends State<SearchScreen> {
                   itemCount: (snapshot.data! as dynamic).docs.length,
                   itemBuilder: (context, index) {
                     return InkWell(
-                      onTap: () => Navigator.of(context).push(
+                      onTap: () => Navigator.of(context).pushReplacement(
                         MaterialPageRoute(
-                          builder: (context) => Profile(
-                            uid: (snapshot.data! as dynamic).docs[index]['uid'],
-                          ),
+                          builder: (BuildContext context) {
+                            return PostGrid(
+                                uid: (snapshot.data! as dynamic).docs[index]
+                                    ['uid']);
+                          },
                         ),
                       ),
+                      // onTap: () => Navigator.of(context).push(
+                      // //   MaterialPageRoute(
+                      // //     builder: (context) => Profile(
+                      // //       uid: (snapshot.data! as dynamic).docs[index]['uid'],
+                      // //     ),
+                      // //   ),
+                      // // ),
+                      // )
                       child: ListTile(
                         leading: CircleAvatar(
                           backgroundImage: NetworkImage(
@@ -77,7 +88,7 @@ class _SearchScreenState extends State<SearchScreen> {
             )
           : FutureBuilder(
               future: FirebaseFirestore.instance
-                  .collection('posts')
+                  .collection('users')
                   .orderBy('datePublished')
                   .get(),
               builder: (context, snapshot) {

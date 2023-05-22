@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:petbook/screen/shop/results.dart';
 import 'package:petbook/utils/constants.dart';
 
 class CategoriesHorizontal extends StatelessWidget {
@@ -16,14 +17,14 @@ class CategoriesHorizontal extends StatelessWidget {
           itemBuilder: (context, index) {
             return GestureDetector(
               onTap: () {
-                // Navigator.push(
-                //   context,
-                //   MaterialPageRoute(
-                //     builder: (context) => ResultsScreen(
-                //       query: categoriesList[index],
-                //     ),
-                //   ),
-                // );
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => ResultsScreen(
+                      query: categoriesList[index],
+                    ),
+                  ),
+                );
               },
               child: Padding(
                 padding:
@@ -33,6 +34,7 @@ class CategoriesHorizontal extends StatelessWidget {
                     mainAxisSize: MainAxisSize.min,
                     children: [
                       CircleAvatar(
+                        radius: 26,
                         backgroundImage: NetworkImage(
                           categoryLogos[index],
                         ),

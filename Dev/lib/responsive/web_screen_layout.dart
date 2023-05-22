@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:petbook/providers/json_details.dart';
+import 'package:petbook/resources/firestore_methods.dart';
 import 'package:petbook/utils/global_variables.dart';
+import 'package:provider/provider.dart';
 
 class WebScreenLayout extends StatefulWidget {
   const WebScreenLayout({super.key});
@@ -14,6 +17,7 @@ class _WebScreenLayoutState extends State<WebScreenLayout> {
 
   @override
   void initState() {
+    FireStoreMethods().getNameAndAddress();
     super.initState();
     pageController = PageController();
   }
@@ -40,6 +44,7 @@ class _WebScreenLayoutState extends State<WebScreenLayout> {
 
   @override
   Widget build(BuildContext context) {
+    Provider.of<UserDetailsProvider>(context).getData();
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.white,
@@ -52,7 +57,7 @@ class _WebScreenLayoutState extends State<WebScreenLayout> {
             ),
             onPressed: () => navigationTapped(0),
           ),
-                    IconButton(
+          IconButton(
             icon: Icon(
               Icons.location_pin,
               color: (_page == 1) ? Colors.orange : Colors.grey,

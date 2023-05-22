@@ -16,7 +16,6 @@ class OurLogin extends StatefulWidget {
 class _OurLoginState extends State<OurLogin> {
   final TextEditingController _emailController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
-  bool _isLoading = false;
   @override
   void dispose() {
     super.dispose();
@@ -25,15 +24,12 @@ class _OurLoginState extends State<OurLogin> {
   }
 
   void loginUserFun() async {
-    setState(() {
-      _isLoading = true;
-    });
+    setState(() {});
     String res = await AuthMethods().loginUser(
         email: _emailController.text, password: _passwordController.text);
     if (res == "success") {
-      setState(() {
-        _isLoading = false;
-      });
+      setState(() {});
+      // ignore: use_build_context_synchronously
       Navigator.of(context).pushReplacement(
         MaterialPageRoute(
           builder: (context) => const ResponsiveLayout(
@@ -42,9 +38,7 @@ class _OurLoginState extends State<OurLogin> {
         ),
       );
     } else {
-      setState(() {
-        _isLoading = false;
-      });
+      setState(() {});
       // ignore: use_build_context_synchronously
       showSnackBar(context, res);
     }
@@ -63,10 +57,6 @@ class _OurLoginState extends State<OurLogin> {
               Padding(
                 padding: const EdgeInsets.all(30.0),
                 child: Image.asset("assets/main.png"),
-              ),
-
-              const SizedBox(
-                height: 15,
               ),
 
               //!EMAIL
@@ -88,7 +78,7 @@ class _OurLoginState extends State<OurLogin> {
               ),
 
               const SizedBox(
-                height: 20.0,
+                height: 10.0,
               ),
 
               //!Password Validation
@@ -106,63 +96,35 @@ class _OurLoginState extends State<OurLogin> {
                 height: 5.0,
               ),
 
-              // Row(
-              //   mainAxisAlignment: MainAxisAlignment.end,
-              //   children: [
-              //     TextButton(
-              //       onPressed: () {
-              //         // Navigator.of(context).push(
-              //         //   MaterialPageRoute(
-              //         //     builder: (BuildContext context) {
-              //         //       return const OurForgetPassword();
-              //         //     },
-              //         //   ),
-              //         // );
-              //       },
-              //       child: const Text(
-              //         'Forgot Password ?',
-              //         textAlign: TextAlign.left,
-              //         style: TextStyle(
-              //           color: Color.fromARGB(255, 133, 133, 133),
-              //           fontSize: 14,
-              //         ),
-              //       ),
-              //     ),
-              //   ],
-              // ),
-
-              Row(
-                children: [
-                  Padding(
-                    padding: const EdgeInsets.only(left: 20, top: 10),
-                    child: ElevatedButton(
-                      // onPressed: () {
-                      //   // if (_formKey.currentState!.validate()) {
-                      //   //   setState(() {
-                      //   //     email = _emailController.text;
-                      //   //     password = _passwordController.text;
-                      //   //   });
-                      //   //   userLogin();
-                      //   // }
-                      // },
-                      onPressed: loginUserFun,
-                      style: ElevatedButton.styleFrom(
-                          backgroundColor: Colors.orange,
-                          foregroundColor: Colors.white,
-                          shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(10.0),
-                          ),
-                          minimumSize: const Size(300, 50)),
-                      child: _isLoading
-                          ? const Center(
-                              child: CircularProgressIndicator(
-                                color: Colors.white,
-                              ),
-                            )
-                          : const Text('Log In'),
-                    ),
+              Padding(
+                padding: const EdgeInsets.symmetric(vertical: 35),
+                child: TextButton(
+                  style: TextButton.styleFrom(
+                    padding: const EdgeInsets.all(15),
+                    shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(15)),
+                    backgroundColor: Colors.orange,
                   ),
-                ],
+                  onPressed: () {
+                    loginUserFun();
+                  },
+                  child: Row(
+                    children: const [
+                      Expanded(
+                        child: Center(
+                          child: Text(
+                            'Log In',
+                            style: TextStyle(
+                              fontWeight: FontWeight.w500,
+                              fontSize: 18,
+                              color: Colors.white,
+                            ),
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
               ),
 
               Row(
@@ -180,7 +142,7 @@ class _OurLoginState extends State<OurLogin> {
                       );
                     },
                     style: ElevatedButton.styleFrom(
-                        minimumSize: const Size(100, 40)),
+                        minimumSize: const Size(10, 30)),
                     child: const Text(
                       "Sign up here",
                       style: TextStyle(

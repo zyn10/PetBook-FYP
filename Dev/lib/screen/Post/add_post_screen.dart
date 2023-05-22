@@ -130,15 +130,15 @@ class _AddPostScreenState extends State<AddPostScreen> {
                 onPressed: clearImage,
               ),
               title: const Text(
-                'Post to',
+                'Post to Newsfeed',
               ),
               centerTitle: false,
               actions: <Widget>[
                 TextButton(
                   onPressed: () => postImage(
-                    userProvider.getUser.uid,
-                    userProvider.getUser.username,
-                    userProvider.getUser.photoUrl,
+                    userProvider.getUser!.uid,
+                    userProvider.getUser!.username,
+                    userProvider.getUser!.photoUrl,
                   ),
                   child: const Text(
                     "Post",
@@ -165,7 +165,7 @@ class _AddPostScreenState extends State<AddPostScreen> {
                   children: <Widget>[
                     CircleAvatar(
                       backgroundImage: NetworkImage(
-                        userProvider.getUser.photoUrl,
+                        userProvider.getUser!.photoUrl,
                       ),
                     ),
                     SizedBox(

@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:petbook/utils/utils.dart';
 import 'package:petbook/widgets/shop/cost.dart';
 
 class ProductInformationWidget extends StatelessWidget {
@@ -15,12 +14,8 @@ class ProductInformationWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    Size screenSize = getScreenSize();
-    SizedBox spaceThingy = const SizedBox(
-      height: 7,
-    );
     return SizedBox(
-      width: screenSize.width / 2,
+      width: 100,
       child: Column(
         mainAxisSize: MainAxisSize.max,
         mainAxisAlignment: MainAxisAlignment.start,
@@ -38,15 +33,13 @@ class ProductInformationWidget extends StatelessWidget {
               ),
             ),
           ),
-          spaceThingy,
-          const Align(
+          Align(
             alignment: Alignment.centerLeft,
             child: Padding(
-              padding: EdgeInsets.symmetric(vertical: 7),
-              child: CostWidget(color: Colors.black, cost: 500),
+              padding: const EdgeInsets.symmetric(vertical: 7),
+              child: CostWidget(color: Colors.black, cost: cost),
             ),
           ),
-          spaceThingy,
           Align(
             alignment: Alignment.centerLeft,
             child: RichText(

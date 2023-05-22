@@ -1,6 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:petbook/responsive/mobile_screen_layout.dart';
 import 'package:provider/provider.dart';
 import '../../providers/user_provider.dart';
 
@@ -10,15 +11,26 @@ class UserListScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final UserProvider userProvider = Provider.of<UserProvider>(context);
-    userProvider.getUser.uid;
+    userProvider.getUser?.uid;
     return Scaffold(
       appBar: AppBar(
         title: const Text('Users'),
+        leading: IconButton(
+          icon: const Icon(Icons.arrow_back),
+          onPressed: () {
+            Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: (context) => const MobileScreenLayout(),
+              ),
+            );
+          },
+        ),
       ),
       body: StreamBuilder<QuerySnapshot>(
         stream: FirebaseFirestore.instance
             .collection('users')
-            .where('uid', isNotEqualTo: userProvider.getUser.uid)
+            .where('uid', isNotEqualTo: userProvider.getUser?.uid)
             .snapshots(),
         builder: (BuildContext context, AsyncSnapshot<QuerySnapshot> snapshot) {
           if (!snapshot.hasData) {

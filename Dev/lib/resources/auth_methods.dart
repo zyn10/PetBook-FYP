@@ -7,6 +7,7 @@ import 'package:petbook/resources/storage_methods.dart';
 class AuthMethods {
   final FirebaseAuth _auth = FirebaseAuth.instance;
   final FirebaseFirestore _firestore = FirebaseFirestore.instance;
+
   // get user details
   Future<model.User> getUserDetails() async {
     User currentUser = _auth.currentUser!;
@@ -23,6 +24,7 @@ class AuthMethods {
     required String password,
     required String username,
     required String fullname,
+    required String address,
     required Uint8List file,
   }) async {
     String res = "Some error Occurred";
@@ -31,6 +33,7 @@ class AuthMethods {
           password.isNotEmpty ||
           username.isNotEmpty ||
           fullname.isNotEmpty ||
+          address.isNotEmpty ||
           file != null) {
         // registering user in auth with email and password
         UserCredential cred = await _auth.createUserWithEmailAndPassword(
@@ -46,6 +49,7 @@ class AuthMethods {
           photoUrl: photoUrl,
           email: email,
           fullname: fullname,
+          address: address,
         );
         await _firestore.collection("users").doc(cred.user!.uid).set(
               user.toJson(),
@@ -69,7 +73,6 @@ class AuthMethods {
   }
 
   //logging in user
-
   Future<String> loginUser(
       {required String email, required String password}) async {
     String res = 'Some Error Occured';

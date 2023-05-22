@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:petbook/providers/json_details.dart';
 import 'package:petbook/providers/user_provider.dart';
+import 'package:petbook/resources/firestore_methods.dart';
 import 'package:petbook/utils/global_variables.dart';
 import 'package:provider/provider.dart';
 
@@ -19,6 +21,7 @@ class ResponsiveLayout extends StatefulWidget {
 class _ResponsiveLayoutState extends State<ResponsiveLayout> {
   @override
   void initState() {
+    FireStoreMethods().getNameAndAddress();
     super.initState();
     addData();
   }
@@ -28,7 +31,9 @@ class _ResponsiveLayoutState extends State<ResponsiveLayout> {
     await userProvider.refreshUser();
   }
 
+  @override
   Widget build(BuildContext context) {
+    Provider.of<UserDetailsProvider>(context).getData();
     return LayoutBuilder(
       builder: (context, constraints) {
         if (constraints.maxWidth > webScreenSize) {

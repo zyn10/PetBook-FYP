@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import '../../Layout/app_style.dart';
-import '../../Layout/size_config.dart';
+
 import '../../utils/utils.dart';
 
 class ProductShowList extends StatelessWidget {
@@ -34,7 +34,7 @@ class ProductShowList extends StatelessWidget {
                 Text(
                   title,
                   style: kSourceSansProBold.copyWith(
-                    fontSize: 16,
+                    fontSize: 22,
                     //SizeConfig.blockSizeHorizontal! * 6,
                   ),
                 ),
@@ -44,16 +44,9 @@ class ProductShowList extends StatelessWidget {
                 Text(
                   '🛒',
                   style: kSourceSansProBold.copyWith(
-                    fontSize: SizeConfig.blockSizeHorizontal! * 3,
+                    fontSize: 18,
                   ),
                 ),
-                const Padding(
-                  padding: EdgeInsets.only(left: 14),
-                  child: Text(
-                    "Show more",
-                    style: TextStyle(color: Colors.orange),
-                  ),
-                )
               ],
             ),
           ),

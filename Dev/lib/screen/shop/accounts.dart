@@ -2,7 +2,8 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:petbook/Layout/app_style.dart';
 import 'package:petbook/providers/user_provider.dart';
-import 'package:petbook/widgets/shop/buy_sell.dart';
+import 'package:petbook/responsive/mobile_screen_layout.dart';
+import 'package:petbook/screen/Post/user_posts.dart';
 import 'package:provider/provider.dart';
 
 class Account extends StatefulWidget {
@@ -16,19 +17,24 @@ class _AccountState extends State<Account> {
   @override
   Widget build(BuildContext context) {
     final UserProvider userProvider = Provider.of<UserProvider>(context);
-    userProvider.getUser!.uid;
+    userProvider.getUser?.uid;
 
     return Scaffold(
       backgroundColor: kWhite,
       appBar: AppBar(
+        backgroundColor: kWhite,
+        title: const Text("Profile"),
         leading: IconButton(
           icon: const Icon(Icons.arrow_back),
           onPressed: () {
-            Navigator.pop(context); // navigate back to the previous screen
+            Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: (context) => const MobileScreenLayout(),
+              ),
+            );
           },
         ),
-        backgroundColor: kWhite,
-        title: const Text("Profile"),
       ),
       body: SingleChildScrollView(
         child: Column(
@@ -52,8 +58,8 @@ class _AccountState extends State<Account> {
                         bottom: -10,
                         left: 80,
                         child: SizedBox(
-                          height: 46,
-                          width: 46,
+                          height: 42,
+                          width: 42,
                           child: TextButton(
                             style: TextButton.styleFrom(
                               shape: RoundedRectangleBorder(
@@ -174,13 +180,13 @@ class _AccountState extends State<Account> {
                   padding: const EdgeInsets.all(20),
                   shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(15)),
-                  backgroundColor: Colors.orange,
+                  backgroundColor: kBackground,
                 ),
                 onPressed: () {
                   Navigator.of(context).pushReplacement(
                     MaterialPageRoute(
                       builder: (BuildContext context) {
-                        return const BuySell();
+                        return PostGrid(uid: userProvider.getUser!.uid);
                       },
                     ),
                   );
@@ -188,23 +194,18 @@ class _AccountState extends State<Account> {
                 child: Row(
                   children: const [
                     Icon(
-                      Icons.sell,
-                      color: Colors.white,
+                      Icons.grade_rounded,
+                      color: kGrey,
                     ),
-                    SizedBox(width: 20),
                     Expanded(
                       child: Center(
                         child: Text(
-                          'Buy/Sell',
+                          " Posts",
                           style: TextStyle(
-                            color: Colors.white,
+                            color: kGrey,
                           ),
                         ),
                       ),
-                    ),
-                    Icon(
-                      Icons.shopping_cart,
-                      color: Colors.white,
                     ),
                   ],
                 ),
@@ -230,20 +231,16 @@ class _AccountState extends State<Account> {
                       color: kWhite,
                       width: 22,
                     ),
-                    const SizedBox(width: 20),
+                    const SizedBox(width: 10),
                     const Expanded(
                       child: Center(
                         child: Text(
-                          'Logout',
+                          'Log Out',
                           style: TextStyle(
                             color: Colors.white,
                           ),
                         ),
                       ),
-                    ),
-                    const Icon(
-                      Icons.arrow_forward_ios,
-                      color: Colors.white,
                     ),
                   ],
                 ),

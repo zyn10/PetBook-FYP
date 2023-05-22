@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:petbook/screen/shop/results.dart';
 import 'package:petbook/utils/constants.dart';
 
 class CategoryWidget extends StatelessWidget {
@@ -9,14 +10,14 @@ class CategoryWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
-        // Navigator.push(
-        //   context,
-        //   MaterialPageRoute(
-        //     builder: (context) => ResultsScreen(
-        //       query: categoriesList[index],
-        //     ),
-        //   ),
-        // );
+        Navigator.push(
+          context,
+          MaterialPageRoute(
+            builder: (context) => ResultsScreen(
+              query: categoriesList[index],
+            ),
+          ),
+        );
       },
       child: Container(
         decoration: BoxDecoration(

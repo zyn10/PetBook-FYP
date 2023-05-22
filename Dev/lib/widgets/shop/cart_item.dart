@@ -1,157 +1,95 @@
 import 'package:flutter/material.dart';
-import 'package:petbook/Layout/app_style.dart';
-import 'package:petbook/Layout/size_config.dart';
-import 'package:petbook/model/productmodel.dart';
-import 'package:petbook/providers/user_provider.dart';
-import 'package:petbook/utils/utils.dart';
-import 'package:petbook/widgets/shop/custom_square.dart';
+import 'package:petbook/model/product_model.dart';
+import 'package:petbook/resources/firestore_methods.dart';
+import 'package:petbook/screen/shop/product_screen.dart';
+import 'package:petbook/widgets/shop/custom_rounded_button.dart';
 import 'package:petbook/widgets/shop/product_information.dart';
-import 'package:provider/provider.dart';
+import '../../utils/utils.dart';
 
 class CartItem extends StatelessWidget {
   final ProductModel product;
-  const CartItem({super.key, required this.product});
+  const CartItem({Key? key, required this.product}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    final UserProvider userProvider = Provider.of<UserProvider>(context);
-    userProvider.getUser!.uid;
-
     Size screenSize = getScreenSize();
     return Container(
-      padding: const EdgeInsets.all(25),
-      height: screenSize.height / 2,
-      width: screenSize.width,
+      padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 40),
+      height: screenSize.height / 3,
+      width: screenSize.width / 2,
       decoration: const BoxDecoration(
         color: Colors.white,
         border: Border(
-          bottom: BorderSide(color: Colors.grey, width: 1),
+          bottom: BorderSide(color: Colors.grey, width: 2),
         ),
       ),
       child: Column(
         children: [
-          Expanded(
-            flex: 3,
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          GestureDetector(
+            onTap: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                    builder: (context) => ProductScreen(productModel: product)),
+              );
+            },
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.start,
               children: [
                 SizedBox(
-                  width: getScreenSize().width / 2,
+                  width: screenSize.width / 2,
                   child: Align(
-                      alignment: Alignment.topLeft,
-                      child: Image.network(product.url)),
+                    child: Center(
+                      child: Image.network(product.url),
+                    ),
+                  ),
                 ),
                 const SizedBox(
-                  height: 20,
+                  width: 20,
                 ),
-                Center(
-                  child: ProductInformationWidget(
-                      productName: product.productName,
-                      cost: product.cost,
-                      sellerName: product.sellerName),
-                )
+                ProductInformationWidget(
+                  productName: product.productName,
+                  cost: product.cost,
+                  sellerName: product.sellerName,
+                ),
               ],
             ),
           ),
-          Expanded(
-            flex: 1,
-            child: Center(
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  CustomSquareButton(
-                    onPressed: () {},
-                    color: kLightGrey,
-                    dimension: 50,
-                    child: const Icon(Icons.remove),
-                  ),
-                  const SizedBox(
-                    width: 20,
-                  ),
-                  CustomSquareButton(
-                    onPressed: () {},
-                    color: kLightGrey,
-                    dimension: 70,
-                    child: const Text('1'),
-                  ),
-                  const SizedBox(
-                    width: 20,
-                  ),
-                  CustomSquareButton(
-                    onPressed: () {},
-                    color: kLightGrey,
-                    dimension: 50,
-                    child: const Icon(Icons.add),
-                  ),
-                ],
-              ),
-            ),
-          ),
           Padding(
-            padding: const EdgeInsets.symmetric(
-              horizontal: kPaddingHorizontal,
-            ),
-            child: Center(
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Container(
-                    padding: const EdgeInsets.symmetric(
-                      vertical: 10,
+            padding: const EdgeInsets.only(top: 5),
+            child: Column(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                Row(
+                  children: [
+                    CustomSimpleRoundedButton(
+                        onPressed: () async {
+                          await FireStoreMethods().addProductToCart(
+                            productModel: ProductModel(
+                                url: product.url,
+                                productName: product.productName,
+                                cost: product.cost,
+                                discount: product.discount,
+                                uid: getUid(),
+                                sellerName: product.sellerName,
+                                sellerUid: product.sellerUid,
+                                rating: product.rating,
+                                noOfRating: product.noOfRating),
+                          );
+                        },
+                        text: "Add this product one more"),
+                    const SizedBox(
+                      width: 5,
                     ),
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(12),
-                      color: kLighterOrange,
-                    ),
-                    width: SizeConfig.blockSizeHorizontal! * 20,
-                    child: Column(
-                      children: [
-                        GestureDetector(
-                          onTap: () {},
-                          child: Text(
-                            'Delete',
-                            overflow: TextOverflow.ellipsis,
-                            maxLines: 1,
-                            style: kSourceSansProBold.copyWith(
-                              fontSize: SizeConfig.blockSizeHorizontal! * 3,
-                              color: kDarkOrange,
-                            ),
-                          ),
-                        ),
-                      ],
-                    ),
-                  ),
-                  const SizedBox(
-                    width: 20,
-                  ),
-                  Container(
-                    padding: const EdgeInsets.symmetric(
-                      vertical: 10,
-                    ),
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(12),
-                      color: kLighterOrange,
-                    ),
-                    width: SizeConfig.blockSizeHorizontal! * 25,
-                    child: Column(
-                      children: [
-                        GestureDetector(
-                          onTap: () {},
-                          child: Text(
-                            'Save for later',
-                            overflow: TextOverflow.ellipsis,
-                            maxLines: 1,
-                            style: kSourceSansProBold.copyWith(
-                              fontSize: SizeConfig.blockSizeHorizontal! * 3,
-                              color: kDarkOrange,
-                            ),
-                          ),
-                        ),
-                      ],
-                    ),
-                  ),
-                ],
-              ),
+                    CustomSimpleRoundedButton(
+                        onPressed: () async {
+                          FireStoreMethods()
+                              .deleteProductFromCart(uid: product.uid);
+                        },
+                        text: "Delete"),
+                  ],
+                ),
+              ],
             ),
           ),
         ],

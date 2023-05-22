@@ -85,35 +85,60 @@ class _PostCardState extends State<PostCard> {
                   ),
                 ),
               ),
-              IconButton(
-                  onPressed: () {
-                    showDialog(
-                      context: context,
-                      builder: (context) => Dialog(
-                        child: ListView(
-                            padding: const EdgeInsets.symmetric(vertical: 16),
-                            shrinkWrap: true,
-                            children: [
-                              'Delete',
-                            ]
-                                .map(
-                                  (e) => InkWell(
-                                    onTap: () async {
-                                      FireStoreMethods()
-                                          .deletePost(widget.snap['postId']);
-                                      Navigator.of(context).pop();
-                                    },
-                                    child: Container(
-                                      padding: const EdgeInsets.symmetric(
-                                          vertical: 12, horizontal: 16),
-                                    ),
-                                  ),
-                                )
-                                .toList()),
-                      ),
-                    );
-                  },
-                  icon: const Icon(Icons.more_vert))
+              // IconButton(
+              //   onPressed: () {
+              //     showDialog(
+              //       context: context,
+              //       builder: (context) => Dialog(
+              //         child: ListView(
+              //           padding: const EdgeInsets.symmetric(vertical: 16),
+              //           shrinkWrap: true,
+              //           children: [
+              //             'Delete',
+              //           ]
+              //               .map(
+              //                 (e) => InkWell(
+              //                   onTap: () async {
+              //                     // Check if the current user is the owner of the post
+              //                     if (widget.snap['userId'] == user!.uid) {
+              //                       FireStoreMethods()
+              //                           .deletePost(widget.snap['postId']);
+              //                     } else {
+              //                       // Show a message indicating that only the owner can delete the post
+              //                       showDialog(
+              //                         context: context,
+              //                         builder: (context) => AlertDialog(
+              //                           title: const Text('Unauthorized'),
+              //                           content: const Text(
+              //                               'Only the owner can delete this post.'),
+              //                           actions: [
+              //                             ElevatedButton(
+              //                               onPressed: () {
+              //                                 Navigator.of(context).pop();
+              //                               },
+              //                               child: const Text('OK'),
+              //                             ),
+              //                           ],
+              //                         ),
+              //                       );
+              //                     }
+              //                     Navigator.of(context).pop();
+              //                   },
+              //                   child: Container(
+              //                     padding: const EdgeInsets.symmetric(
+              //                       vertical: 12,
+              //                       horizontal: 16,
+              //                     ),
+              //                   ),
+              //                 ),
+              //               )
+              //               .toList(),
+              //         ),
+              //       ),
+              //     );
+              //   },
+              //   icon: const Icon(Icons.more_vert),
+              // )
             ],
           ),
         ),
@@ -198,13 +223,6 @@ class _PostCardState extends State<PostCard> {
                       ))),
               icon: const Icon(
                 Icons.comment_outlined,
-                color: Colors.grey,
-              ),
-            ),
-            IconButton(
-              onPressed: () {},
-              icon: const Icon(
-                Icons.send,
                 color: Colors.grey,
               ),
             ),

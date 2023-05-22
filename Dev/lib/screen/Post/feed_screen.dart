@@ -1,6 +1,8 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:petbook/providers/user_provider.dart';
 import 'package:petbook/widgets/Post/post_card.dart';
+import 'package:provider/provider.dart';
 import '../chat/chat_screen.dart';
 
 class FeedScreen extends StatelessWidget {
@@ -8,33 +10,30 @@ class FeedScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final UserProvider userProvider = Provider.of<UserProvider>(context);
+    userProvider.getUser?.uid;
+
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Colors.orange,
-        centerTitle: false,
-        title: const Text(
-          "PetBook",
-          style: TextStyle(
-            color: Color.fromARGB(255, 255, 255, 255),
-            fontSize: 18,
-          ),
-        ),
         actions: [
           IconButton(
-            onPressed: () {
-              Navigator.push(
-                context,
-                MaterialPageRoute(builder: (context) => const UserListScreen()),
-              );
-            },
-            icon: const Icon(
-              Icons.message_outlined,
-            ),
-          )
+              onPressed: () {
+                Navigator.of(context).pushReplacement(MaterialPageRoute(
+                  builder: (BuildContext context) {
+                    return const UserListScreen();
+                  },
+                ));
+              },
+              icon: const Icon(
+                Icons.message,
+              ))
         ],
       ),
       body: StreamBuilder(
-        stream: FirebaseFirestore.instance.collection('posts').snapshots(),
+        stream: FirebaseFirestore.instance
+            .collection('posts')
+            .orderBy("datePublished", descending: true)
+            .snapshots(),
         builder: (context,
             AsyncSnapshot<QuerySnapshot<Map<String, dynamic>>> snapshot) {
           if (snapshot.connectionState == ConnectionState.waiting) {

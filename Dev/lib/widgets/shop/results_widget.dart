@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:petbook/model/productmodel.dart';
-import 'package:petbook/screen/shop/productscreen.dart';
+import 'package:petbook/model/product_model.dart';
+import 'package:petbook/screen/shop/product_screen.dart';
 import 'package:petbook/utils/utils.dart';
 import 'package:petbook/widgets/shop/cost.dart';
 import 'package:petbook/widgets/shop/ratings.dart';
@@ -17,12 +17,12 @@ class ResultsWidget extends StatelessWidget {
     Size screenSize = getScreenSize();
     return GestureDetector(
       onTap: () {
-        // Navigator.push(
-        //   context,
-        //   MaterialPageRoute(
-        //     builder: (context) => ProductScreen(productModel: product),
-        //   ),
-        // );
+        Navigator.push(
+          context,
+          MaterialPageRoute(
+            builder: (context) => ProductScreen(productModel: product),
+          ),
+        );
       },
       child: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 10),

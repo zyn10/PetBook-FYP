@@ -1,17 +1,18 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:petbook/screen/shop/accounts.dart';
 import 'package:petbook/utils/utils.dart';
 
-class Profile extends StatefulWidget {
+class PostGrid extends StatefulWidget {
   final String uid;
-  const Profile({required this.uid, super.key});
+  const PostGrid({required this.uid, super.key});
 
   @override
-  State<Profile> createState() => _ProfileState();
+  State<PostGrid> createState() => _PostGridState();
 }
 
-class _ProfileState extends State<Profile> {
+class _PostGridState extends State<PostGrid> {
   var userData = {};
   int postLen = 0;
   bool isLoading = false;
@@ -32,13 +33,13 @@ class _ProfileState extends State<Profile> {
           .doc(widget.uid)
           .get();
 
-      // get post lENGTH
-      var postSnap = await FirebaseFirestore.instance
-          .collection('posts')
-          .where('uid', isEqualTo: FirebaseAuth.instance.currentUser!.uid)
-          .get();
+      // // get post lENGTH
+      // var postSnap = await FirebaseFirestore.instance
+      //     .collection('posts')
+      //     .where('uid', isEqualTo: FirebaseAuth.instance.currentUser!.uid)
+      //     .get();
 
-      postLen = postSnap.docs.length;
+      //postLen = postSnap.docs.length;
       userData = userSnap.data()!;
     } catch (e) {
       showSnackBar(
@@ -59,11 +60,16 @@ class _ProfileState extends State<Profile> {
           )
         : Scaffold(
             appBar: AppBar(
-              backgroundColor: Colors.white,
-              title: Text(
-                userData['username'],
+              title: const Text('User Profile'),
+              leading: IconButton(
+                icon: const Icon(Icons.arrow_back),
+                onPressed: () {
+                  Navigator.pushReplacement(
+                    context,
+                    MaterialPageRoute(builder: (context) => const Account()),
+                  );
+                },
               ),
-              centerTitle: false,
             ),
             body: ListView(
               children: [
@@ -103,7 +109,7 @@ class _ProfileState extends State<Profile> {
                           top: 15,
                         ),
                         child: Text(
-                          userData['username'],
+                          userData['fullname'],
                           style: const TextStyle(
                             fontWeight: FontWeight.bold,
                           ),
@@ -115,7 +121,7 @@ class _ProfileState extends State<Profile> {
                           top: 1,
                         ),
                         child: Text(
-                          userData['bio'],
+                          userData['address'],
                         ),
                       ),
                     ],

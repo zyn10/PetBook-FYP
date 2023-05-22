@@ -1,26 +1,18 @@
-import 'package:flutter/material.dart';
-import 'package:petbook/Layout/details.dart';
-import 'package:petbook/Layout/shop_layout.dart';
+import 'package:petbook/Alerts/receive_alerts.dart';
 import 'package:petbook/screen/Post/add_post_screen.dart';
+import 'package:petbook/screen/Post/feed_screen.dart';
 import 'package:petbook/screen/shop/accounts.dart';
-import 'package:petbook/screen/maps/map_screen.dart';
-import 'package:petbook/screen/shop/cart.dart';
 import 'package:petbook/screen/shop/shop.dart';
-import 'package:petbook/widgets/shop/buy_sell.dart';
-import '../screen/Post/feed_screen.dart';
-import '../screen/search_screen.dart';
+import 'package:petbook/stack.dart';
+import '../screen/search_users.dart';
 
 const webScreenSize = 600;
 const homeScreenItems = [
-  //BuySell(),
-  Cart(),
-  Account(),
-  //FeedScreen(),
-  MapScreen(),
-  //Text("Blogs Coming Soon"),
-  PetShop(),
-  AddPostScreen(),
-  //SearchScreen(),
+  FeedScreen(),
   Shop(),
-  Details(),
+  SearchScreen(),
+  AddPostScreen(),
+  AlertScreen(),
+  Account(),
+  StackScreen(),
 ];

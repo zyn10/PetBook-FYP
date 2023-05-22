@@ -1,9 +1,9 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
-import 'package:petbook/model/productmodel.dart';
+import 'package:petbook/model/product_model.dart';
 import 'package:petbook/widgets/loading.dart';
-import 'package:petbook/widgets/shop/results_widjet.dart';
-import 'package:petbook/widgets/shop/search_bar_widget.dart';
+import 'package:petbook/widgets/shop/results_widget.dart';
+import 'package:petbook/widgets/shop/search_bar.dart';
 
 class ResultsScreen extends StatelessWidget {
   final String query;
@@ -15,7 +15,7 @@ class ResultsScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: SearchBar(isReadOnly: false, hasBackButton: true),
+      appBar: SearchBarWidget(isReadOnly: false, hasBackButton: true),
       body: Column(
         children: [
           Align(

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:petbook/model/product_model.dart';
 import 'package:petbook/widgets/shop/single_product.dart';
 
 const List<String> categoriesList = [
@@ -7,7 +8,6 @@ const List<String> categoriesList = [
   "Toys",
   "Homes",
   "Food",
-  "Accessories",
 ];
 
 const List<String> categoryLogos = [
@@ -16,7 +16,6 @@ const List<String> categoryLogos = [
   "https://imagesvc.meredithcorp.io/v3/mm/image?url=https%3A%2F%2Fstatic.onecms.io%2Fwp-content%2Fuploads%2Fsites%2F47%2F2020%2F07%2F31%2Fvarious-pet-toys-00c3ec73.jpg",
   "https://static.onecms.io/wp-content/uploads/sites/47/2021/06/17/dog-in-diy-doghouse-2000.jpg",
   "https://beta-kiosk.icrowdnewswire.com/assets/source/users/kamal.negi/dog-food-1296x728-header.jpg",
-  "https://cms-live.pandora.net/resource/responsive-image/1909662/m37-hybrid-plp-hero-module/xs/8/aw22-e-wo-pet-accessories-ecomm-m37.jpg",
 ];
 
 const List<String> largeAds = [
@@ -43,25 +42,89 @@ List<String> keysOfRating = [
   "Excellent"
 ];
 
-List<Widget> testChildren = const [
+List<Widget> testChildren = [
   SingleProduct(
-    url:
-        "https://i2-prod.irishmirror.ie/incoming/article26185096.ece/ALTERNATES/s615/0_I220209_151028_100570909oTextTRMRMMGLPICT000255932810o.jpg",
+    productModel: ProductModel(
+        url: "https://m.media-amazon.com/images/I/11uufjN3lYL._SX90_SY90_.png",
+        productName: "Rick Astley",
+        cost: 9999999999999,
+        discount: 0,
+        uid: "eioejfbkn",
+        sellerName: "Rick Seller",
+        sellerUid: "983498ihjb",
+        rating: 1,
+        noOfRating: 1),
   ),
   SingleProduct(
-    url:
-        "https://i2-prod.irishmirror.ie/incoming/article26185096.ece/ALTERNATES/s615/0_I220209_151028_100570909oTextTRMRMMGLPICT000255932810o.jpg",
+    productModel: ProductModel(
+        url: "https://m.media-amazon.com/images/I/11uufjN3lYL._SX90_SY90_.png",
+        productName: "Rick Astley",
+        cost: 9999999999999,
+        discount: 0,
+        uid: "eioejfbkn",
+        sellerName: "Rick Seller",
+        sellerUid: "983498ihjb",
+        rating: 1,
+        noOfRating: 1),
   ),
   SingleProduct(
-    url:
-        "https://i2-prod.irishmirror.ie/incoming/article26185096.ece/ALTERNATES/s615/0_I220209_151028_100570909oTextTRMRMMGLPICT000255932810o.jpg",
+    productModel: ProductModel(
+        url: "https://m.media-amazon.com/images/I/11uufjN3lYL._SX90_SY90_.png",
+        productName: "Rick Astley",
+        cost: 9999999999999,
+        discount: 0,
+        uid: "eioejfbkn",
+        sellerName: "Rick Seller",
+        sellerUid: "983498ihjb",
+        rating: 1,
+        noOfRating: 1),
   ),
   SingleProduct(
-    url:
-        "https://i2-prod.irishmirror.ie/incoming/article26185096.ece/ALTERNATES/s615/0_I220209_151028_100570909oTextTRMRMMGLPICT000255932810o.jpg",
+    productModel: ProductModel(
+        url: "https://m.media-amazon.com/images/I/11uufjN3lYL._SX90_SY90_.png",
+        productName: "Rick Astley",
+        cost: 9999999999999,
+        discount: 0,
+        uid: "eioejfbkn",
+        sellerName: "Rick Seller",
+        sellerUid: "983498ihjb",
+        rating: 1,
+        noOfRating: 1),
   ),
   SingleProduct(
-    url:
-        "https://i2-prod.irishmirror.ie/incoming/article26185096.ece/ALTERNATES/s615/0_I220209_151028_100570909oTextTRMRMMGLPICT000255932810o.jpg",
-  ),
+    productModel: ProductModel(
+        url: "https://m.media-amazon.com/images/I/11uufjN3lYL._SX90_SY90_.png",
+        productName: "Rick Astley",
+        cost: 9999999999999,
+        discount: 0,
+        uid: "eioejfbkn",
+        sellerName: "Rick Seller",
+        sellerUid: "983498ihjb",
+        rating: 1,
+        noOfRating: 1),
+  )
+];
+
+List<String> dogs = [
+  'dog_marly.png',
+  'dog_cocoa.png',
+  'dog_walt.png',
+];
+
+List<String> cats = [
+  'cat_alyx.png',
+  'cat_brook.png',
+  'cat_marly.png',
+];
+
+List<String> dogsName = [
+  'Marly',
+  'Cocoa',
+  'Walt',
+];
+
+List<String> catsName = [
+  'Alyx',
+  'Brook',
+  'Marly',
 ];

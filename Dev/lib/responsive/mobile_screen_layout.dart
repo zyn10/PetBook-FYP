@@ -1,6 +1,10 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:petbook/resources/firestore_methods.dart';
 import 'package:petbook/utils/global_variables.dart';
+import 'package:provider/provider.dart';
+
+import '../providers/json_details.dart';
 
 class MobileScreenLayout extends StatefulWidget {
   const MobileScreenLayout({Key? key}) : super(key: key);
@@ -15,6 +19,7 @@ class _MobileScreenLayoutState extends State<MobileScreenLayout> {
 
   @override
   void initState() {
+    FireStoreMethods().getNameAndAddress();
     super.initState();
     pageController = PageController();
   }
@@ -38,6 +43,7 @@ class _MobileScreenLayoutState extends State<MobileScreenLayout> {
 
   @override
   Widget build(BuildContext context) {
+    Provider.of<UserDetailsProvider>(context).getData();
     return Scaffold(
       body: PageView(
         controller: pageController,
@@ -57,14 +63,14 @@ class _MobileScreenLayoutState extends State<MobileScreenLayout> {
           ),
           BottomNavigationBarItem(
               icon: Icon(
-                Icons.location_pin,
+                Icons.shopping_bag,
                 color: (_page == 1) ? Colors.orange : Colors.grey,
               ),
               label: '',
               backgroundColor: Colors.white),
           BottomNavigationBarItem(
               icon: Icon(
-                Icons.article_rounded,
+                Icons.search,
                 color: (_page == 2) ? Colors.orange : Colors.grey,
               ),
               label: '',
@@ -78,7 +84,7 @@ class _MobileScreenLayoutState extends State<MobileScreenLayout> {
               backgroundColor: Colors.white),
           BottomNavigationBarItem(
             icon: Icon(
-              Icons.search,
+              Icons.notifications,
               color: (_page == 4) ? Colors.orange : Colors.grey,
             ),
             label: '',
@@ -86,7 +92,7 @@ class _MobileScreenLayoutState extends State<MobileScreenLayout> {
           ),
           BottomNavigationBarItem(
             icon: Icon(
-              Icons.shopping_bag,
+              Icons.person,
               color: (_page == 5) ? Colors.orange : Colors.grey,
             ),
             label: '',
@@ -94,7 +100,7 @@ class _MobileScreenLayoutState extends State<MobileScreenLayout> {
           ),
           BottomNavigationBarItem(
             icon: Icon(
-              Icons.person,
+              Icons.menu,
               color: (_page == 6) ? Colors.orange : Colors.grey,
             ),
             label: '',

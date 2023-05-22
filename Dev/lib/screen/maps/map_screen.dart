@@ -75,23 +75,6 @@ class _MapScreenState extends State<MapScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      // appBar: AppBar(
-      //   backgroundColor: Colors.white,
-      //   title: Form(
-      //     child: TextFormField(
-      //       controller: tController,
-      //       decoration:
-      //           const InputDecoration(labelText: 'Search for a place...'),
-      //       onFieldSubmitted: (String _) {
-      //         setState(() {
-      //           isShowPlaces = true;
-      //         });
-      //         //print(_);
-      //       },
-      //     ),
-      //   ),
-      // ),
-      //appBar: Title("Locate near by pet shops"),
       body: GoogleMap(
         initialCameraPosition: const CameraPosition(
           target: LatLng(31.418715, 73.079109),

@@ -4,12 +4,13 @@ class Post {
   final String description;
   final String uid;
   final String username;
+  // ignore: prefer_typing_uninitialized_variables
   final likes;
   final String postId;
   final DateTime datePublished;
   final String postUrl;
   final String profImage;
-
+ 
   const Post({
     required this.description,
     required this.uid,

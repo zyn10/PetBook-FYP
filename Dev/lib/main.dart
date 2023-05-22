@@ -2,18 +2,19 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_stripe/flutter_stripe.dart';
+import 'package:petbook/providers/json_details.dart';
 import 'package:petbook/providers/user_provider.dart';
 import 'package:petbook/responsive/responsive_layout.dart';
 import 'package:petbook/responsive/web_screen_layout.dart';
 import 'package:petbook/screen/auth/login_screen.dart';
 import 'package:petbook/responsive/mobile_screen_layout.dart';
 import 'package:provider/provider.dart';
-//import 'package:petbook/screen/login_screen.dart';
-//import 'package:petbook/utils/colors.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-
+  Stripe.publishableKey =
+      "pk_test_51N7nWLAVXUi2V7LVC1B7rwj6oz1sWkOGY1hoTv3N4wUQ3ct4b33YaZrKziwCagv2vksIjDjrC97fLIrAjPyRaft200xAIkbm0s";
   if (kIsWeb) {
     await Firebase.initializeApp(
       options: const FirebaseOptions(
@@ -41,6 +42,9 @@ class MyApp extends StatelessWidget {
         ChangeNotifierProvider(
           create: (_) => UserProvider(),
         ),
+        ChangeNotifierProvider(
+          create: (_) => UserDetailsProvider(),
+        ),
       ],
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
@@ -62,7 +66,6 @@ class MyApp extends StatelessWidget {
                   );
                 }
               }
-
               if (snapshot.connectionState == ConnectionState.waiting) {
                 return const Center(
                   child: CircularProgressIndicator(

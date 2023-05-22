@@ -103,7 +103,7 @@ class _ProfileState extends State<Profile> {
                           top: 15,
                         ),
                         child: Text(
-                          userData['username'],
+                          userData['fullname'],
                           style: const TextStyle(
                             fontWeight: FontWeight.bold,
                           ),
@@ -115,7 +115,7 @@ class _ProfileState extends State<Profile> {
                           top: 1,
                         ),
                         child: Text(
-                          userData['bio'],
+                          userData['address'],
                         ),
                       ),
                     ],
@@ -147,7 +147,6 @@ class _ProfileState extends State<Profile> {
                       itemBuilder: (context, index) {
                         DocumentSnapshot snap =
                             (snapshot.data! as dynamic).docs[index];
-
                         return Image(
                           image: NetworkImage(snap['postUrl']),
                           fit: BoxFit.cover,

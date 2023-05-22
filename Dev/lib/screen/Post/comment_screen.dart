@@ -8,6 +8,7 @@ import 'package:petbook/widgets/Post/comment_card.dart';
 import 'package:provider/provider.dart';
 
 class CommentsScreen extends StatefulWidget {
+  // ignore: prefer_typing_uninitialized_variables
   final postId;
   const CommentsScreen({
     super.key,
@@ -33,6 +34,7 @@ class _CommentsScreenState extends State<CommentsScreen> {
       );
 
       if (res != 'success') {
+        // ignore: use_build_context_synchronously
         showSnackBar(context, res);
       }
       setState(() {
@@ -48,7 +50,7 @@ class _CommentsScreenState extends State<CommentsScreen> {
 
   @override
   Widget build(BuildContext context) {
-    final User user = Provider.of<UserProvider>(context).getUser;
+    final User? user = Provider.of<UserProvider>(context).getUser;
 
     return Scaffold(
       appBar: AppBar(
@@ -63,7 +65,9 @@ class _CommentsScreenState extends State<CommentsScreen> {
             .collection('posts')
             .doc(widget.postId)
             .collection('comments')
+            .orderBy("datePublished",descending: true)
             .snapshots(),
+
         builder: (context,
             AsyncSnapshot<QuerySnapshot<Map<String, dynamic>>> snapshot) {
           if (snapshot.connectionState == ConnectionState.waiting) {
@@ -90,7 +94,7 @@ class _CommentsScreenState extends State<CommentsScreen> {
           child: Row(
             children: [
               CircleAvatar(
-                backgroundImage: NetworkImage(user.photoUrl),
+                backgroundImage: NetworkImage(user!.photoUrl),
                 radius: 18,
               ),
               Expanded(
